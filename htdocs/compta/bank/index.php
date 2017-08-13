@@ -60,9 +60,9 @@ $sortfield = GETPOST("sortfield",'alpha');
 $sortorder = GETPOST("sortorder",'alpha');
 $page = GETPOST("page",'int');
 if (empty($page) || $page == -1) { $page = 0; }     // If $page is not defined, or '' or -1
-$offset = $limit * $page;
-$pageprev = $page - 1;
-$pagenext = $page + 1;
+$offset = (int)$limit * (int)$page;   		//covert the variable to int for fix the PHP 7.1 warning
+$pageprev = (int)$page - 1;  			//covert the variable to int for fix the PHP 7.1 warning
+$pagenext = (int)$page + 1;  			//covert the variable to int for fix the PHP 7.1 warning
 if (! $sortfield) $sortfield='b.label';
 if (! $sortorder) $sortorder='ASC';
 
